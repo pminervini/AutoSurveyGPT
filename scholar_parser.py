@@ -136,6 +136,9 @@ class GSEntry:
         self.metadata['next_page_url'] = url
 
     def fetch_parsing_results(self, results):
+        new_results = {k.replace('>', '').replace('<', ''): v for k, v in results.items()}
+        results = new_results
+
         self.title = results['title']
         self.authors = results['authors']
         self.venue = results['venue']
